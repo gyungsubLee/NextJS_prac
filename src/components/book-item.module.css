@@ -1,0 +1,52 @@
+.booItem_container {
+  position: relative;
+  display: flex;
+  height: 150px;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  padding: 15px 0;
+  color: black;
+  text-decoration: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.booItem_container:last-child {
+  border-bottom: none;
+}
+
+.img_container {
+  margin-left: 10px;
+  margin-right: 25px;
+  position: relative;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.text_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-decoration: flex-end;
+}
+
+.title {
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.sub_title {
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+  word-break: break-word;
+}
+
+.author {
+  display: block;
+  margin-top: auto;
+  color: #666;
+}
