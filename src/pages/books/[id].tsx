@@ -47,11 +47,13 @@ export default function Page({
       </div>
       <div>
         <h2 className={style.title}>{title}</h2>
-        <h3 className={style.sub_title}>{subTitle}</h3>
-        <p className={style.description}>{description}</p>
         <p className={style.author}>
           {author} | {publisher}{" "}
         </p>
+        <div className={style.description}>
+          <h3 className={style.sub_title}>{subTitle}</h3>
+          <p>{description}</p>
+        </div>
       </div>
     </div>
   );
