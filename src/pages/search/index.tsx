@@ -1,27 +1,31 @@
 import BookItem from "@/components/book-item";
 import SearchableLayout from "@/components/searchable-layout";
-import { InferGetServerSidePropsType, GetServerSidePropsContext } from "next";
 import { fetchSearchBooks } from "@/lib/fetch-books";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { BookData } from "@/types";
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
-  const q = context.query.q as string;
+export default function Search() {
+  const [books, setBooks] = useState<BookData[]>([]);
 
-  const searchBooks = await fetchSearchBooks(q);
-  return {
-    props: {
-      searchBooks,
-    },
+  const router = useRouter();
+  const q = router.query.q as string;
+
+  const fetchSearchResult = async (q: string) => {
+    const data = await fetchSearchBooks(q);
+    setBooks(data);
   };
-};
 
-export default function Search({
-  searchBooks,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  useEffect(() => {
+    if (q) {
+      // 검색 결과 API
+      fetchSearchResult(q);
+    }
+  }, [q]);
+
   return (
     <div>
-      {searchBooks.map((book) => (
+      {books.map((book) => (
         <BookItem key={book.id} {...book} />
       ))}
     </div>
