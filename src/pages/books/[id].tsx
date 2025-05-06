@@ -18,6 +18,14 @@ export const getStaticPaths = () => {
 export const getStaticProps = async (context: GetServerSidePropsContext) => {
   const id = context.params?.id;
   const book = await fetchBookById(Number(id));
+
+  // 404 페이지 반환
+  if (!book) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
       book,
