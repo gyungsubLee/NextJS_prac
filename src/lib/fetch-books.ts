@@ -1,6 +1,8 @@
 import { BookData } from "@/types";
 
-const BASE_URL = "http://localhost:12345";
+// const BASE_URL = "http://localhost:12345";
+const BASE_URL = "https://onbite-books-server-henna.vercel.app";
+
 const BASE_URL_BOOK = `${BASE_URL}/book`;
 
 async function fetchTemplate(url: string): Promise<BookData[]> {
